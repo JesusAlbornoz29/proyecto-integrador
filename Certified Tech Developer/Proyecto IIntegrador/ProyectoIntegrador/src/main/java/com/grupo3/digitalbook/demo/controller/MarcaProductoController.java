@@ -39,7 +39,8 @@ public class MarcaProductoController {
     @PostMapping("/guardar")
     public ResponseEntity<?> guardarMarcaProducto(@RequestBody MarcaProducto marcaProducto){
         marcaProductoService.guardar(marcaProducto);
-        return ResponseEntity.status(HttpStatus.OK).body(MarcaProducto.getId());
+        Long marcaProductoId = marcaProducto.getId();
+        return ResponseEntity.status(HttpStatus.OK).body(marcaProductoId);
     }
 
     // En la url /marcaProducto/modificar se modifica un marcaProducto PUT
