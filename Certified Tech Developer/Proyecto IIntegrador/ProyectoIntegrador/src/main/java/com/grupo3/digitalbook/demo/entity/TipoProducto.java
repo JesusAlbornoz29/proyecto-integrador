@@ -23,4 +23,7 @@ public class TipoProducto {
     private String descripcion;
 
 
+    public Long getId() {
+        return null;
+    }
 }
