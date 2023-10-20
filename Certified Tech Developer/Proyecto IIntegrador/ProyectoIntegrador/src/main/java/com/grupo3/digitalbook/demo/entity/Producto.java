@@ -28,8 +28,8 @@ public class Producto {
     @NotBlank()
     private String descripcion;
 
-    @NotNull
-    private byte[] imagen;
+    @NotBlank()
+    private String imagen;
 
     @NotNull
     private boolean stock;

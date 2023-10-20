@@ -2,9 +2,7 @@ package com.grupo3.digitalbook.demo.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 
@@ -18,8 +16,11 @@ import javax.validation.constraints.NotBlank;
 
 public class MarcaProducto {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
     private String descripcion;
+
+
 }
