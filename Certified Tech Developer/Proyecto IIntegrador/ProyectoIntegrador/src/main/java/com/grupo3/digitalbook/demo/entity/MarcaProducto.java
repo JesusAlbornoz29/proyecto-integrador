@@ -23,4 +23,8 @@ public class MarcaProducto {
     private String descripcion;
 
 
+    public Long getId() {
+        return null;
+    }
+
 }
