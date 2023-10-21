@@ -28,7 +28,7 @@ public class Producto {
     @NotBlank()
     private String descripcion;
 
-    @NotBlank()
+    @NotBlank
     private String imagen;
 
     @NotNull
@@ -41,4 +41,7 @@ public class Producto {
     @OneToOne
     @JoinColumn(name = "id_marca_producto", referencedColumnName = "id")
     private MarcaProducto marcaProducto;
+
+ //   @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  //  private List<ImagenProducto> imagenes;
 }

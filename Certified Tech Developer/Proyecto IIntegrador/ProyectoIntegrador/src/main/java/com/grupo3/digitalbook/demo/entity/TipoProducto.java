@@ -23,4 +23,5 @@ public class TipoProducto {
     private String descripcion;
 
 
+
 }
