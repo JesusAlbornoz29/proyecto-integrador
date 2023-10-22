@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "Productos")
@@ -28,8 +29,6 @@ public class Producto {
     @NotBlank()
     private String descripcion;
 
-    @NotBlank
-    private String imagen;
 
     @NotNull
     private boolean stock;
@@ -42,6 +41,7 @@ public class Producto {
     @JoinColumn(name = "id_marca_producto", referencedColumnName = "id")
     private MarcaProducto marcaProducto;
 
- //   @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  //  private List<ImagenProducto> imagenes;
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ImagenProducto> imagenProductos;
+
 }

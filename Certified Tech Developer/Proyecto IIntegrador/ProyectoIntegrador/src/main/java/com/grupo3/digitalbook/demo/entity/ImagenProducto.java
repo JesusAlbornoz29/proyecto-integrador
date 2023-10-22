@@ -6,21 +6,23 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 
-@Entity //
-@Table(name = "MarcaProducto")
+@Entity
+@Table(name = "ImagenProducto")
 @Getter
 @Setter
-@NoArgsConstructor // Constructor sin parámetros
-@AllArgsConstructor // Constructor con todos los parámetros
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 
-public class MarcaProducto {
+public class ImagenProducto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    private String descripcion;
+    private String ruta;
 
-
+    @ManyToOne
+    @JoinColumn(name = "producto_id")
+    private Producto producto;
 }

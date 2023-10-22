@@ -58,7 +58,8 @@ public class ProductoService implements IProductoService {
                     producto.setNombre(productoNew.getNombre());
                     producto.setDescripcion(productoNew.getDescripcion());
                     producto.setPrecio(productoNew.getPrecio());
-                    producto.setImagen(productoNew.getImagen());
+                    producto.setImagenProductos(productoNew.getImagenProductos());
+                    // producto.setImagen(productoNew.getImagen());
                     producto.setMarcaProducto(productoNew.getMarcaProducto());
                     producto.setTipoProducto(productoNew.getTipoProducto());
                     LOGGER.info("se actualizo el producto");
