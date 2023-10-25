@@ -63,4 +63,15 @@ public class MarcaProductoService implements IMarcaProductoService {
         }
     }
 
+    public MarcaProducto buscarPorDescripcion(String descripcion) throws ResourceNotFoundException {
+        MarcaProducto marcaProducto = iMarcaProductoRepository.findByDescripcion(descripcion);
+        if(marcaProducto != null){
+            logger.info("MarcaProducto - buscarPorDescripcion: Se ha encontrado la marcaProducto");
+            return marcaProducto;
+        } else {
+            logger.error("MarcaProducto - buscarPorDescripcion: No se ha encontrado la marcaProducto");
+            throw new ResourceNotFoundException("No se ha encontrado la marcaProducto");
+        }
+    }
+
 }

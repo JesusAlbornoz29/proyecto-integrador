@@ -1,9 +1,13 @@
 package com.grupo3.digitalbook.demo.service.impl;
 
+import com.grupo3.digitalbook.demo.entity.MarcaProducto;
 import com.grupo3.digitalbook.demo.entity.Producto;
+import com.grupo3.digitalbook.demo.entity.TipoProducto;
 import com.grupo3.digitalbook.demo.exception.BadRequestException;
 import com.grupo3.digitalbook.demo.exception.ResourceNotFoundException;
+import com.grupo3.digitalbook.demo.repository.IMarcaProductoRepository;
 import com.grupo3.digitalbook.demo.repository.IProductoRepository;
+import com.grupo3.digitalbook.demo.repository.ITipoProductoRepository;
 import com.grupo3.digitalbook.demo.service.IProductoService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +24,43 @@ public class ProductoService implements IProductoService {
     @Autowired
     IProductoRepository iProductoRepository;
 
+    @Autowired //inyeccion de dependencias
+    IMarcaProductoRepository iMarcaProductoRepository;
+
+    @Autowired //inyeccion de dependencias
+    ITipoProductoRepository iTipoProductoRepository;
+
 
     public Producto guardarProducto(Producto productoNew) throws BadRequestException{
-        if(productoNew.getTipoProducto() != null & productoNew.getMarcaProducto() !=null){
+       /* if(productoNew.getTipoProducto() != null & productoNew.getMarcaProducto() !=null){
             LOGGER.info("se guardo el producto con exito");
             return iProductoRepository.save(productoNew);
         } else {
             LOGGER.warn("no se guardo el producto");
             throw new BadRequestException("no se guardo el producto");
+        } */
+
+        // Verificamos si la marca existe en la base de datos
+        MarcaProducto marcaProducto = iMarcaProductoRepository.findByDescripcion(productoNew.getMarcaProducto().getDescripcion());
+        if(marcaProducto == null){
+            // Si no existe, lo guardamos
+            marcaProducto = iMarcaProductoRepository.save(productoNew.getMarcaProducto());
         }
+
+        // Verificar si el tipo existe en la base de datos
+        TipoProducto tipoProducto = iTipoProductoRepository.findByDescripcion(productoNew.getTipoProducto().getDescripcion());
+        if (tipoProducto == null) {
+            // Si no existe, lo guardamos
+            tipoProducto = iTipoProductoRepository.save(productoNew.getTipoProducto());
+        }
+
+
+        // Asoiciamos la marca y el tipo al producto
+        productoNew.setMarcaProducto(marcaProducto);
+        productoNew.setTipoProducto(tipoProducto);
+
+        // Guardamos el producto
+        return iProductoRepository.save(productoNew);
     }
 
 

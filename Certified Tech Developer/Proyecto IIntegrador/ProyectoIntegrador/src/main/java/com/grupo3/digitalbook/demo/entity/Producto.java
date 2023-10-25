@@ -42,6 +42,7 @@ public class Producto {
     private MarcaProducto marcaProducto;
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<ImagenProducto> imagenProductos;
+    @Column(name = "imagenProductos")
+    private List<ImagenProducto> imagenProductos; //
 
 }

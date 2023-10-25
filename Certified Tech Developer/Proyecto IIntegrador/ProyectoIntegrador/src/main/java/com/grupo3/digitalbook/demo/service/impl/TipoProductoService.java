@@ -61,5 +61,9 @@ public class TipoProductoService implements ITipoProductoService {
         }
     }
 
+    public TipoProducto buscarPorDescripcion(String descripcion){
+        logger.info("se encontro el tipo de producto");
+        return iTipoProdcutoRepository.findByDescripcion(descripcion);
+    }
 
 }
