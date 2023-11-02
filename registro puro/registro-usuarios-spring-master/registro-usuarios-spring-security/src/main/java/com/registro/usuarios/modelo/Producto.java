@@ -1,4 +1,4 @@
-package com.grupo3.digitalbook.demo.entity;
+package com.registro.usuarios.modelo;
 
 import lombok.*;
 

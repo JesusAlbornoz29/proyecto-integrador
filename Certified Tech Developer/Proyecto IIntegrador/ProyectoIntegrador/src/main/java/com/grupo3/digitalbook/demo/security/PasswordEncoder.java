@@ -1,4 +1,4 @@
-package com.grupo3.digitalbook.demo.service.impl;
+package com.grupo3.digitalbook.demo.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

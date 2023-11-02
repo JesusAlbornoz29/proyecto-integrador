@@ -1,12 +1,12 @@
-package com.grupo3.digitalbook.demo.service.impl;
+package com.registro.usuarios.servicio.impl;
 
 
-import com.grupo3.digitalbook.demo.entity.TipoProducto;
-import com.grupo3.digitalbook.demo.exception.ResourceNotFoundException;
-import com.grupo3.digitalbook.demo.repository.ITipoProductoRepository;
-import com.grupo3.digitalbook.demo.service.ITipoProductoService;
-import org.springframework.stereotype.Service;
+import com.registro.usuarios.exception.ResourceNotFoundException;
+import com.registro.usuarios.modelo.TipoProducto;
+import com.registro.usuarios.repositorio.ITipoProductoRepository;
+import com.registro.usuarios.servicio.ITipoProductoService;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,6 +1,7 @@
-package com.grupo3.digitalbook.demo.repository;
+package com.registro.usuarios.repositorio;
 
-import com.grupo3.digitalbook.demo.entity.MarcaProducto;
+
+import com.registro.usuarios.modelo.MarcaProducto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IMarcaProductoRepository extends JpaRepository<MarcaProducto, Long> {

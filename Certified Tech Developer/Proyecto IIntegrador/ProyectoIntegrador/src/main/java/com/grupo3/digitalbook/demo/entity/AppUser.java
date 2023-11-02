@@ -1,5 +1,7 @@
 package com.grupo3.digitalbook.demo.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,12 +12,14 @@ import java.util.Collections;
 
 
 @Entity
+@Getter
+@Setter
 @Table(name = "USUARIOS") // Establecemos el nombre de la tabla en la BD
 public class AppUser implements UserDetails {
 
     @Id
-    @SequenceGenerator(name = "appUser_sequence", sequenceName = "appUser_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appUser_sequence")
+    @SequenceGenerator(name = "appUser_sequence", sequenceName = "appUser_sequence", allocationSize = 1) // Generamos el id de forma automáticamente en la BD con un sequence generator de 1 en 1 (allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appUser_sequence") // Generamos el id de forma automáticamente en la BD con un sequence generator de 1 en 1 (allocationSize = 1)
     private long id;
 
     private String name;
@@ -38,45 +42,6 @@ public class AppUser implements UserDetails {
         this.appUserRole = appUserRole;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public AppUserRole getAppUserRole() {
-        return appUserRole;
-    }
-
-    public void setAppUserRole(AppUserRole appUserRole) {
-        this.appUserRole = appUserRole;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -84,33 +49,24 @@ public class AppUser implements UserDetails {
         return Collections.singletonList(grantedAuthority);
     }
 
+    // Métodos que nos obliga a implementar la interfaz UserDetails
     @Override
-    public String getPassword() {
-        return password;
+    public boolean isAccountNonExpired() { // Si la cuenta no ha expirado
+        return true; // Devuelve true
     }
 
     @Override
-    public String getUsername() {
-        return username;
+    public boolean isAccountNonLocked() { // Si la cuenta no está bloqueada
+        return true; // Devuelve true
     }
 
     @Override
-    public boolean isAccountNonExpired() {
-        return true;
+    public boolean isCredentialsNonExpired() { // Si las credenciales no han expirado
+        return true; // Devuelve true
     }
 
     @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
+    public boolean isEnabled() { // Si la cuenta está habilitada
+        return true; // Devuelve true
     }
 }

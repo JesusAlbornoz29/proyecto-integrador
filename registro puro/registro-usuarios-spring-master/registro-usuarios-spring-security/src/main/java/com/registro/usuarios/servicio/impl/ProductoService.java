@@ -1,10 +1,10 @@
-package com.grupo3.digitalbook.demo.service.impl;
+package com.registro.usuarios.servicio.impl;
 
-import com.grupo3.digitalbook.demo.entity.Producto;
-import com.grupo3.digitalbook.demo.exception.BadRequestException;
-import com.grupo3.digitalbook.demo.exception.ResourceNotFoundException;
-import com.grupo3.digitalbook.demo.repository.IProductoRepository;
-import com.grupo3.digitalbook.demo.service.IProductoService;
+import com.registro.usuarios.exception.BadRequestException;
+import com.registro.usuarios.exception.ResourceNotFoundException;
+import com.registro.usuarios.modelo.Producto;
+import com.registro.usuarios.repositorio.IProductoRepository;
+import com.registro.usuarios.servicio.IProductoService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +35,7 @@ public class ProductoService implements IProductoService {
 
 
 
-    public Optional<Producto> findProductoById(Long id) throws ResourceNotFoundException{
+    public Optional<Producto> findProductoById(Long id) throws ResourceNotFoundException {
 
         Optional<Producto> producto = iProductoRepository.findById(id);
         if (producto.isPresent()){

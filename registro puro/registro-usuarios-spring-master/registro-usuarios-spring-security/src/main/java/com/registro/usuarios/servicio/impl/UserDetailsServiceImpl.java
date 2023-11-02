@@ -1,4 +1,4 @@
-package com.grupo3.digitalbook.demo.service.impl;
+package com.registro.usuarios.servicio.impl;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
